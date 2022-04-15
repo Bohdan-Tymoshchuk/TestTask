@@ -14,6 +14,7 @@ namespace TestTask.Controllers
         {
             _contactService = contactService;
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(ContactDto contact)
         {
@@ -21,7 +22,7 @@ namespace TestTask.Controllers
 
             if (contactId == null)
             {
-                return new NotFoundResult();
+                return new NotFoundObjectResult($"Account with such name '{contact.AccountName}' doesn`t exist");
             }
 
             return Ok(contactId);

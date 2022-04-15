@@ -20,14 +20,14 @@ namespace TestTask.Services
                 IncidentId = accountDto.IncidentId
             };
 
-            var createdAccount =  _accountRepository.CreateAsync(account);
+            var createdAccount =  await _accountRepository.CreateAsync(account);
 
             if (createdAccount == null)
             {
                 throw new InvalidOperationException();
             }
 
-            return account.Id;
+            return createdAccount.Id;
         }
     }
 }
